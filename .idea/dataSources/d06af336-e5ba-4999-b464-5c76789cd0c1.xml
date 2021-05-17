@@ -798,7 +798,7 @@ false Zulu
     <database id="4" parent="1" name="sweater">
       <ObjectId>24763</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>520</IntrospectionStateNumber>
+      <IntrospectionStateNumber>552</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="5" parent="1" name="pg_execute_server_program">
@@ -869,7 +869,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>521</IntrospectionStateNumber>
+      <IntrospectionStateNumber>553</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="19" parent="4" name="plpgsql">
@@ -978,28 +978,50 @@ UC/10
     <table id="32" parent="18" name="message">
       <ObjectId>24764</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>513</StateNumber>
+      <StateNumber>537</StateNumber>
     </table>
-    <column id="33" parent="32" name="id">
+    <table id="33" parent="18" name="user_role">
+      <ObjectId>24774</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>528</StateNumber>
+    </table>
+    <table id="34" parent="18" name="usr">
+      <ObjectId>24777</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>528</StateNumber>
+    </table>
+    <column id="35" parent="32" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>513</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="34" parent="32" name="tag">
+    <column id="36" parent="32" name="tag">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>513</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="35" parent="32" name="text">
+    <column id="37" parent="32" name="text">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>513</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="36" parent="32" name="message_pkey">
+    <column id="38" parent="32" name="author">
+      <Position>4</Position>
+      <DataType>bytea|0s</DataType>
+      <StateNumber>533</StateNumber>
+      <TypeId>17</TypeId>
+    </column>
+    <column id="39" parent="32" name="user_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>536</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="40" parent="32" name="message_pkey">
       <ObjectId>24770</ObjectId>
       <StateNumber>513</StateNumber>
       <ColNames>id</ColNames>
@@ -1009,12 +1031,88 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="37" parent="32" name="message_pkey">
+    <key id="41" parent="32" name="message_pkey">
       <ObjectId>24771</ObjectId>
       <StateNumber>513</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>message_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="42" parent="32" name="fk70bv6o4exfe3fbrho7nuotopf">
+      <ObjectId>24790</ObjectId>
+      <StateNumber>537</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>24777</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usr</RefTableName>
+      <RefKeyName>usr_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="43" parent="33" name="user_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>526</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="44" parent="33" name="roles">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>526</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="45" parent="33" name="fkfpm8swft53ulq2hl11yplpr5">
+      <ObjectId>24785</ObjectId>
+      <StateNumber>528</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>24777</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usr</RefTableName>
+      <RefKeyName>usr_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="46" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>527</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="47" parent="34" name="active">
+      <Position>2</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>527</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="48" parent="34" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>527</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="49" parent="34" name="username">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>527</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="50" parent="34" name="usr_pkey">
+      <ObjectId>24783</ObjectId>
+      <StateNumber>527</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <key id="51" parent="34" name="usr_pkey">
+      <ObjectId>24784</ObjectId>
+      <StateNumber>527</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
