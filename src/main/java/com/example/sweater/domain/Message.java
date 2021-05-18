@@ -1,7 +1,5 @@
 package com.example.sweater.domain;
 
-import com.example.sweater.domain.User;
-
 import javax.persistence.*;
 
 @Entity
